@@ -15,8 +15,12 @@
     <!--FIM 1-->
 </head>
 <body>
+    <div id="buttons"></div>
     <button id='btn-sqrt'>RAIZ</button>
     <button id="btn-fraction">FRAÇÂO</button>
+    <button id="btn-plus-minus">+-</button>
+    <button id="btn-exponent">x<sup>y</sup></button>
+    
     <div contenteditable="false"><!--style="border: 2px solid blue; padding: 2px;"-->
         <span id="editor" style="margin: 5px;">fala..Michel..manda..um..baskara..aqui... \frac{2}{a}</span>
     </div>
@@ -25,13 +29,17 @@
         var editorElement = document.getElementById('editor');
         var editorMathField = MQ.MathField(editorElement);
         
-        var btnSqrt = document.getElementById('btn-sqrt')
-        btnSqrt.addEventListener('click', () => {   
+        $('#btn-sqrt').on('click', () => {   
         editorMathField.cmd('\\sqrt')
         })
-        var btnFraction = document.getElementById('btn-fraction')
-        btnFraction.addEventListener('click', () => {   
+        $('#btn-fraction').on('click', () => {   
         editorMathField.cmd('\\frac')
+        })
+        $('#btn-plus-minus').on('click', () => {   
+        editorMathField.cmd('\\pm')
+        })
+        $('#btn-exponent').on('click', () => {   
+        editorMathField.cmd('^')
         })
     </script>
     <script src="./scripts/main.js"></script>

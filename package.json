@@ -1,0 +1,25 @@
+{
+  "name": "Editor-with-ReactJS",
+  "version": "1.0.0",
+  "description": "Another attempt to build an editor, this time using ReactJS, katex, react-katex, and MathQuil",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src -d scripts -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/victorvianaom/Editor-with-ReactJS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/victorvianaom/Editor-with-ReactJS/issues"
+  },
+  "homepage": "https://github.com/victorvianaom/Editor-with-ReactJS#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-react": "^6.24.1"
+  }
+}
