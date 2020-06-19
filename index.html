@@ -1,0 +1,23 @@
+<html>
+<head>
+    <title>Attempt React + MathQuill</title>
+    <!--INICIO 1 o codigo dentro desse bloco nao pode estar em outra ordem(CSS, jQuery, JS)-->
+    <link rel="stylesheet" href="./scripts/mathquill-0.10.1/mathquill.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./scripts/mathquill-0.10.1/mathquill.js"></script>
+    <script>
+        var MQ = MathQuill.getInterface(2);
+    </script>
+    <!--FIM 1-->
+</head>
+<body>
+    <div contenteditable="false">
+        <span id="editor">fala-Michel...-manda-um-baskara-aqui... \frac{2}{a}</span>
+    </div>
+
+    <script>
+      var editorElement = document.getElementById('editor');
+      var editorMathField = MQ.MathField(editorElement);
+    </script>
+</body>
+</html>
