@@ -1,6 +1,10 @@
 <html>
 <head>
     <title>Attempt React + MathQuill</title>
+
+    <script src="./scripts/react.development.js"></script>
+    <script src="./scripts/react-dom.development.js"></script>
+
     <!--INICIO 1 o codigo dentro desse bloco nao pode estar em outra ordem(CSS, jQuery, JS)-->
     <link rel="stylesheet" href="./scripts/mathquill-0.10.1/mathquill.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -11,13 +15,25 @@
     <!--FIM 1-->
 </head>
 <body>
-    <div contenteditable="false">
-        <span id="editor">fala-Michel...-manda-um-baskara-aqui... \frac{2}{a}</span>
+    <button id='btn-sqrt'>RAIZ</button>
+    <button id="btn-fraction">FRAÇÂO</button>
+    <div contenteditable="false"><!--style="border: 2px solid blue; padding: 2px;"-->
+        <span id="editor" style="margin: 5px;">fala..Michel..manda..um..baskara..aqui... \frac{2}{a}</span>
     </div>
 
     <script>
-      var editorElement = document.getElementById('editor');
-      var editorMathField = MQ.MathField(editorElement);
+        var editorElement = document.getElementById('editor');
+        var editorMathField = MQ.MathField(editorElement);
+        
+        var btnSqrt = document.getElementById('btn-sqrt')
+        btnSqrt.addEventListener('click', () => {   
+        editorMathField.cmd('\\sqrt')
+        })
+        var btnFraction = document.getElementById('btn-fraction')
+        btnFraction.addEventListener('click', () => {   
+        editorMathField.cmd('\\frac')
+        })
     </script>
+    <script src="./scripts/main.js"></script>
 </body>
 </html>
