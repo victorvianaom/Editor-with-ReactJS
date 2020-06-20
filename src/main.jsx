@@ -4,7 +4,7 @@ class MathButton extends React.Component {
         this.clickHandler = this.clickHandler.bind(this)
     }
     clickHandler() {
-        editorMathField.cmd(this.props.com)
+        editorMathField.cmd(this.props.latex)
     }
     render() {
         return (
@@ -14,10 +14,10 @@ class MathButton extends React.Component {
 }
 ReactDOM.render(
     <div>
-        <MathButton com={'\\sqrt'} val='RAIZ'/>
-        <MathButton com={'\\frac'} val='FRACAO'/>
-        <MathButton com={'\\pm'} val='+ -'/>
-        <MathButton com={'^'} val={<span>x<sup>y</sup></span>}/>
+        <MathButton latex={'\\sqrt'} val='RAIZ'/>
+        <MathButton latex={'\\frac'} val='FRACAO'/>
+        <MathButton latex={'\\pm'} val='+ -'/>
+        <MathButton latex={'^'} val={<span>x<sup>y</sup></span>}/>
     </div>,
     document.getElementById('buttons')
 )
