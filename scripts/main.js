@@ -1,33 +1,58 @@
-class MathButton extends React.Component {
+class MathBox extends React.Component {
     constructor(props) {
         super(props);
-        this.clickHandler = this.clickHandler.bind(this);
-    }
-    clickHandler() {
-        editorMathField.cmd(this.props.latex);
+        this.state = {
+            style: {
+                margin: "auto",
+                padding: 5
+            }
+        };
     }
     render() {
         return React.createElement(
-            'button',
-            { onClick: this.clickHandler },
+            "textarea",
+            { id: "textarea-math-box", style: this.state.style },
+            " "
+        );
+    }
+}
+ReactDOM.render(React.createElement(MathBox, null), document.getElementById('div-editor'));
+
+class MathButton extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleClick = this.handleClick.bind(this);
+        var mathElement = document.getElementById('textarea-math-box');
+        var mathField = MQ.MathField(mathElement);
+        this.state = {
+            activeMathField: mathField /// CHANGE mathFild as the math-box being focused change
+        };
+    }
+    handleClick() {
+        this.state.activeMathField.cmd(this.props.latex);
+    }
+    render() {
+        return React.createElement(
+            "button",
+            { onClick: this.handleClick },
             this.props.val
         );
     }
 }
 ReactDOM.render(React.createElement(
-    'div',
+    "div",
     null,
-    React.createElement(MathButton, { latex: '\\sqrt', val: 'RAIZ' }),
-    React.createElement(MathButton, { latex: '\\frac', val: 'FRACAO' }),
-    React.createElement(MathButton, { latex: '\\pm', val: '+ -' }),
+    React.createElement(MathButton, { latex: '\\sqrt', val: "RAIZ" }),
+    React.createElement(MathButton, { latex: '\\frac', val: "FRACAO" }),
+    React.createElement(MathButton, { latex: '\\pm', val: "+ -" }),
     React.createElement(MathButton, { latex: '^', val: React.createElement(
-            'span',
+            "span",
             null,
-            'x',
+            "x",
             React.createElement(
-                'sup',
+                "sup",
                 null,
-                'y'
+                "y"
             )
         ) })
 ), document.getElementById('buttons'));
