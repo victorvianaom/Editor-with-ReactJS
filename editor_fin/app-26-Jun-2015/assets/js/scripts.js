@@ -54,7 +54,7 @@ $(document).ready(function() { // when the document is fully loaded, then execut
 		});
 
 		return  function (latex) {//[...FIX...] I didn`t get exactly what this thing does, I just know that it is rendering the SVG in some way...
-			queue.Push(hideBox, ['Text', math, '\\displaystyle{'+latex+'}'], showBox); 
+			queue.Push(hideBox, ['Text', math, '\\displaystyle{'+latex+'}'], showBox); //[...FIX...] the Push method is in the Queue DOCS
 		};
 
 	})();
