@@ -1,0 +1,12 @@
+#editable-math, textarea, #latex-source {
+  width: 400px;
+  height: 100px;
+  resize: none; }
+
+.box {
+  float: left;
+  text-align: left; }
+
+.mathquill-rendered-math * {
+  box-sizing: content-box;
+  top: auto; }

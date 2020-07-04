@@ -10,8 +10,8 @@ class MathBox extends React.Component {
     }
     render() {
         return React.createElement(
-            "textarea",
-            { id: "textarea-math-box", style: this.state.style },
+            "div",
+            { id: "div-math-box", style: this.state.style },
             " "
         );
     }
@@ -22,7 +22,7 @@ class MathButton extends React.Component {
     constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
-        var mathElement = document.getElementById('textarea-math-box');
+        var mathElement = document.getElementById('div-math-box');
         var mathField = MQ.MathField(mathElement);
         this.state = {
             activeMathField: mathField /// CHANGE mathFild as the math-box being focused change
