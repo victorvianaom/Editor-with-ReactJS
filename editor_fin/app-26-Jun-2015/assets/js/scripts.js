@@ -1,5 +1,5 @@
 'use strict'; // tells the interpreter to use the strict mode of javascript
-
+// just a brief note: $() is the jQuery way of doing `query select` from DOM elements
 $(document).ready(function() { // when the document is fully loaded, then execute the code inside...
 	var latexMath = $('#editable-math'),
 		latexSource = $('#latex-source'),
@@ -7,19 +7,19 @@ $(document).ready(function() { // when the document is fully loaded, then execut
 		typingTimer = null, // this will be used to store the the returnd velue of the function setTimeout when it is called inside the `render()` function.
 		doneTypingInterval = 500; // this will be used for rendering the SVG, it waits this many miliseconds after the user stops typing...
 
-	function latexMathToLatexSource () {// funcao que joga o conteudo da caixa mathquill para a caixa de latex, convertendo-o
+	function latexMathToLatexSource () {// this function converts the content inside mathquill field to latex, and put it in the latex field
     	setTimeout(function() { //The setTimeout() method calls a function or evaluates an expression after a specified number of milliseconds.
      		var latex = latexMath.mathquill('latex'); // converts the content inside the mathquill field to latex and stores in `latex`
-      		latexSource.val(latex); // .val() is a jQuery method. Sets the texteare value to the latex code which corresponds to what is inside the mathquill field
+      		latexSource.val(latex); // .val() is a jQuery method. Sets the `texteare` value to the latex code which corresponds to what is inside the mathquill field
 		}, 0);
 	}
 
-	function latexSourceToLatexMath () {// funcao que converte o codigo da caixa latex para a caixa mathquill
+	function latexSourceToLatexMath () {// this function do the reverse operation of the previous function (Latex -> Mathquill)
 		var oldtext = latexSource.val();
     	setTimeout(function() {
       		var newtext = latexSource.val();
       		if(newtext !== oldtext) {
-        		latexMath.mathquill('latex', newtext);
+        		latexMath.mathquill('latex', newtext); // converting latex -> Mathquill and rendering in the mathquill field
       		}
     	}, 0);
 	}
@@ -31,9 +31,12 @@ $(document).ready(function() { // when the document is fully loaded, then execut
 		}, doneTypingInterval);
 	}
 
+	// A little thing I noticed, is that in this version of the code, MathJax is being used only 
+	// for the purpose of SVG rendering, as you will see bellow...
+
 	var updateMath = (function () {// funcao auxiliar para renderizar SVG no box
 
-		var queue = MathJax.Hub.queue,
+		var queue = MathJax.Hub.queue, //[...FIX...] I'll read the DOCS and try to understand better thins Queue thing...
 			math = null,
 			box = null,
 
@@ -45,13 +48,13 @@ $(document).ready(function() { // when the document is fully loaded, then execut
 			};
 
 		queue.Push(function () {
-			math = MathJax.Hub.getAllJax('MathOutput')[0];
+			math = MathJax.Hub.getAllJax('MathOutput')[0];//[...FIX...] this is another thing I should undertand better by reading the DOCS...
 			box = document.getElementById('box'); // #box is the div where SVG is being rendered
-			showBox();
+			showBox(); // shows the box with SVG...
 		});
 
-		return  function (latex) {
-			queue.Push(hideBox, ['Text', math, '\\displaystyle{'+latex+'}'], showBox);
+		return  function (latex) {//[...FIX...] I didn`t get exactly what this thing does, I just know that it is rendering the SVG in some way...
+			queue.Push(hideBox, ['Text', math, '\\displaystyle{'+latex+'}'], showBox); 
 		};
 
 	})();
