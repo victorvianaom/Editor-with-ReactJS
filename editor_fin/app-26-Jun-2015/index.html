@@ -3,13 +3,13 @@
 <head>
 	<meta charset='utf-8'>
 	<title>Math Editor POC</title>
-	<link rel="stylesheet" type="text/css" href="assets/components/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="assets/components/bootstrap/dist/css/bootstrap.css"><!--components-->
 	<link rel="stylesheet" type="text/css" href="assets/mathquill-0.9.4/mathquill.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
-	<script src="assets/components/jquery/dist/jquery.min.js"></script>
+	<script src="assets/components/jquery/dist/jquery.min.js"></script><!--components-->
 	<script src="assets/mathquill-0.9.4/mathquill.js"></script>
-	<script src="assets/components/bootstrap/dist/js/bootstrap.js"></script>
-	<script type="text/javascript" src="assets/components/MathJax/MathJax.js?config=TeX-AMS-MML_SVG.js"></script>
+	<script src="assets/components/bootstrap/dist/js/bootstrap.js"></script><!--components-->
+	<script type="text/javascript" src="assets/components/MathJax/MathJax.js?config=TeX-AMS-MML_SVG.js"></script><!--components-->
 </head>
 <body>
 	<script>
@@ -93,10 +93,11 @@
 
 			<p>WYSIWYG editor:</p>
 			<span id="editable-math" class="mathquill-editable">\hat{3}</span><br><br>
-			<p>Latex source:</p><textarea id="latex-source"></textarea><br><br>
+			<p>Latex source:</p>
+			<textarea id="latex-source"></textarea><br><br>
 			<p>SVG output</p>
 			<div class="box" id="box" style="visibility:hidden">
-			<div id="MathOutput" class="output">$${}$$</div>
+				<div id="MathOutput" class="output">$${}$$</div>
 			</div>
 		</div>
 	<script src="assets/js/scripts.js"></script>
