@@ -1,16 +1,16 @@
-'use strict';
+'use strict'; // tells the interpreter to use the strict mode of javascript
 
-$(document).ready(function() {
+$(document).ready(function() { // when the document is fully loaded, then execute the code inside...
 	var latexMath = $('#editable-math'),
 		latexSource = $('#latex-source'),
 		svgOutput = $('#svg-output'),
-		typingTimer = null,
-		doneTypingInterval = 500;
+		typingTimer = null, // this will be used to store the the returnd velue of the function setTimeout when it is called inside the `render()` function.
+		doneTypingInterval = 500; // this will be used for rendering the SVG, it waits this many miliseconds after the user stops typing...
 
 	function latexMathToLatexSource () {// funcao que joga o conteudo da caixa mathquill para a caixa de latex, convertendo-o
-    	setTimeout(function() {
-     		var latex = latexMath.mathquill('latex');
-      		latexSource.val(latex);
+    	setTimeout(function() { //The setTimeout() method calls a function or evaluates an expression after a specified number of milliseconds.
+     		var latex = latexMath.mathquill('latex'); // converts the content inside the mathquill field to latex and stores in `latex`
+      		latexSource.val(latex); // .val() is a jQuery method. Sets the texteare value to the latex code which corresponds to what is inside the mathquill field
 		}, 0);
 	}
 
@@ -25,8 +25,8 @@ $(document).ready(function() {
 	}
 
 	function render () {// renderiza no #box a imagem em SVG
-		clearTimeout(typingTimer);
-		typingTimer = setTimeout(function () {
+		clearTimeout(typingTimer); // cancels the previous timer to get a new one
+		typingTimer = setTimeout(function () { //Return Value:	A Number, representing the ID value of the timer that is set. Use this value with the clearTimeout() method to cancel the timer
 			updateMath(latexSource.val());
 		}, doneTypingInterval);
 	}
@@ -34,15 +34,15 @@ $(document).ready(function() {
 	var updateMath = (function () {// funcao auxiliar para renderizar SVG no box
 
 		var queue = MathJax.Hub.queue,
-		math = null,
-		box = null,
+			math = null,
+			box = null,
 
-		hideBox = function () { // when this function is called the #box with SVG content will be hidden
-			box.style.visibility = 'hidden';// SVG will be hidden
-		},
-		showBox = function () { // when this function is called the #box with SVG content will be shown on page
-			box.style.visibility = 'visible'; // SVG appears
-		};
+			hideBox = function () { // when this function is called the #box with SVG content gets hidden
+				box.style.visibility = 'hidden';// SVG will be hidden
+			},
+			showBox = function () { // when this function is called the #box with SVG content will be shown on page
+				box.style.visibility = 'visible'; // SVG appears
+			};
 
 		queue.Push(function () {
 			math = MathJax.Hub.getAllJax('MathOutput')[0];
@@ -51,8 +51,7 @@ $(document).ready(function() {
 		});
 
 		return  function (latex) {
-			queue.Push(hideBox, ['Text', math, '\\displaystyle{'+latex+'}'],
-				showBox);
+			queue.Push(hideBox, ['Text', math, '\\displaystyle{'+latex+'}'], showBox);
 		};
 
 	})();
