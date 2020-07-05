@@ -47,7 +47,7 @@ $(document).ready(function() { // when the document is fully loaded, then execut
 				box.style.visibility = 'visible'; // SVG appears
 			};
 
-		queue.Push(function () {
+		queue.Push(function () { //[...FIX...] this is in the Queue DOCS
 			math = MathJax.Hub.getAllJax('MathOutput')[0];//[...FIX...] this is another thing I should undertand better by reading the DOCS...
 			box = document.getElementById('box'); // #box is the div where SVG is being rendered
 			showBox(); // shows the box with SVG...
@@ -72,3 +72,17 @@ $(document).ready(function() { // when the document is fully loaded, then execut
 	latexSource.bind('keydown keypress', latexSourceToLatexMath);
 
 });
+
+/*
+MathQuill functions used:
+Esses metodos estao ultrapassados, a nova api usa outros [...FIX... procurar quais os novos metodos]
+12	var latex = latexMath.mathquill('latex');
+22	latexMath.mathquill('latex', newtext);
+64	latexMath.mathquill('write', syntax);
+
+MathJax functions used:
+39	var queue = MathJax.Hub.queue,
+51	math = MathJax.Hub.getAllJax('MathOutput')[0];
+50	queue.Push(function () {
+57	queue.Push(hideBox, ['Text', math, '\\displaystyle{'+latex+'}'], showBox);
+*/
